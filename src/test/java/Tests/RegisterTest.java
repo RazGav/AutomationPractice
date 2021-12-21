@@ -1,5 +1,6 @@
 package Tests;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +28,10 @@ public class RegisterTest {
         //Identificam "Skip sign in" element
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
         skipSignInElement.click();
+
+        //Validam pagina de "Register"
+        String actualRegister = driver.getTitle();
+        Assert.assertEquals("Register", actualRegister);
 
         //Identificam elementul Spatiul pentru Nume
         WebElement firstNameElement = driver.findElement(By.cssSelector("input[placeholder=\"First Name\"]"));
@@ -74,7 +79,15 @@ public class RegisterTest {
         String adresa = "Str. Ajun, nr. 1, bloc D12, Ap.24";
         adressElement.sendKeys(adresa);
 
+        //Identificam Year dropbox element
+        WebElement passwordElement = driver.findElement(By.id("firstpassword"));
+        String password = "Parola1";
+        passwordElement.sendKeys(password);
+
+
         // "// = de unde incepi, [@ = dupa ce cauti], / = intri mai adanca in lista cautata pt xpath
+        // ex. //textarea[@ng-model='Adress']
+
 
 
 
