@@ -55,8 +55,8 @@ public class FrameTest {
         driver.switchTo().defaultContent();
 
         frameOptions.get(1).click();
-        driver.findElement(By.xpath("//iframe[@src='MultipleFrames.html']"));
-        driver.findElement(By.xpath("//iframe[@src='SingleFrame.html']"));
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@src='MultipleFrames.html']")));
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@src='SingleFrame.html']")));
         WebElement multipleInputElement = driver.findElement(By.xpath("//input[@type='text']"));
         multipleInputElement.sendKeys("multiple frames");
 
