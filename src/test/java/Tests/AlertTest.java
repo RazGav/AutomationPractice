@@ -1,5 +1,6 @@
 package Tests;
 
+import Base.ShareData;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
@@ -11,20 +12,10 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
-public class AlertTest {
-
-    public WebDriver driver;
+public class AlertTest extends ShareData {
 
     @Test
     public void testAutomat() {
-        //Specificam unde se afla driverul pentru browser
-        System.setProperty("webdriver.chrome.driver", "D:\\Programs\\Automation\\chromedriver.exe");
-        //Deschidem un browser
-        driver = new ChromeDriver();
-        //Introducem o adresa
-        driver.get("http://demo.automationtesting.in/Index.html");
-        //Schimbar rezolutia in maximize
-        driver.manage().window().maximize();
 
         //Identificam "Skip sign in" element
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));

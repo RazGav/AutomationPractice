@@ -60,9 +60,5 @@ public class FrameTest {
         WebElement multipleInputElement = driver.findElement(By.xpath("//input[@type='text']"));
         multipleInputElement.sendKeys("multiple frames");
 
-        //driver.quit();
-
-
-
     }
 }
