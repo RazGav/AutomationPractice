@@ -68,8 +68,8 @@ public class WindowTest {
 
         windowsOptions.get(1).click();
         //click the button element
-        WebElement clickWindow = driver.findElement(By.cssSelector("#Separate a button"));
-        clickWindow.click();
+        WebElement clickWindowElement = driver.findElement(By.cssSelector("#Seperate  button"));
+        clickWindowElement.click();
         List<String> windows = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(windows.get(1));
         System.out.println("titlul paginii" + driver.getTitle());
