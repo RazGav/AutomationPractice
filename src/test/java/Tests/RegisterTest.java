@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.ShareData;
+import Help.ElementMethods;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,12 +14,16 @@ import java.util.List;
 
 public class RegisterTest extends ShareData {
 
+    public ElementMethods elementMethods;
+
     @Test
     public void testAutomat() {
 
+        elementMethods = new ElementMethods(driver);
+
         //Identificam "Skip sign in" element
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
-        skipSignInElement.click();
+        elementMethods.clickElement(skipSignInElement);
 
         //Validam pagina de "Register"
         String actualRegister = driver.getTitle();
@@ -81,8 +86,7 @@ public class RegisterTest extends ShareData {
 
         //Identificam Year dropbox element
         WebElement yearDropboxElement = driver.findElement(By.id("yearbox"));
-        Select yearSelect = new Select(yearDropboxElement);
-        yearSelect.selectByValue("1998");
+
 
         //Identificam Month dropbox element
         WebElement monthDropboxElement = driver.findElement(By.xpath("//select[@ng-model='monthbox']"));
@@ -120,11 +124,11 @@ public class RegisterTest extends ShareData {
 
         //Upload photo
         WebElement photoElement = driver.findElement(By.id("imagesrc"));
-        photoElement.sendKeys("C:\\Users\\razvu\\OneDrive\\Desktop\\Untitled.png");
+        elementMethods.fillElement(photoElement,"C:\\Users\\razvu\\OneDrive\\Desktop\\Untitled.png");
 
         //Submit button
         WebElement submitButtonElement = driver.findElement(By.id("submitbtn"));
-        submitButtonElement.click();
+        elementMethods.clickElement(submitButtonElement);
 
         //Refresh button
         //WebElement refreshButtonElement = driver.findElement(By.id("Button1"));

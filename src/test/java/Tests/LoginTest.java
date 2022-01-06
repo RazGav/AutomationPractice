@@ -32,17 +32,14 @@ public class LoginTest extends ShareData {
 
         WebElement passwordElement = driver.findElement(By.xpath("//input[@placeholder='Password']"));
         String passwordValue = "salabalamala";
-        passwordElement.sendKeys(passwordValue);
+        elementMethods.fillElement(passwordElement, passwordValue);
 
         WebElement enterElement = driver.findElement(By.id("enterbtn"));
-        enterElement.click();
+        elementMethods.clickElement(enterElement);
 
         WebElement eroareElement = driver.findElement(By.id("errormsg"));
         String expectedError = "Invalid User Name or PassWord";
         elementMethods.validateElementMessage(eroareElement, expectedError);
-
-
-
 
     }
 }

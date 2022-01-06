@@ -1,6 +1,8 @@
 package Tests;
 
 import Base.ShareData;
+import Help.AlertMethods;
+import Help.ElementMethods;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
@@ -14,8 +16,14 @@ import java.util.List;
 
 public class AlertTest extends ShareData {
 
+    public ElementMethods elementMethods;
+    public AlertMethods alertMethods;
+
     @Test
     public void testAutomat() {
+
+        elementMethods = new ElementMethods(driver);
+        alertMethods = new AlertMethods(driver);
 
         //Identificam "Skip sign in" element
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
