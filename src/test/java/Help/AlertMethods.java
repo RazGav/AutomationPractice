@@ -27,7 +27,7 @@ public class AlertMethods {
         alertOk.accept();
     }
 
-    public void dismissFillAlert(String value){
+    public void cancelFillAlert(String value){
         Alert alertOk = driver.switchTo().alert();
         alertOk.sendKeys(value);
         alertOk.dismiss();

@@ -2,6 +2,7 @@ package Tests;
 
 import Base.ShareData;
 import Help.ElementMethods;
+import Help.FrameMethods;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -16,28 +17,27 @@ public class FrameTest extends ShareData {
 
 
     public ElementMethods elementMethods;
+    public FrameMethods frameMethods;
 
     @Test
     public void testAutomat() {
 
         elementMethods = new ElementMethods(driver);
+        frameMethods = new FrameMethods(driver);
 
         //Identificam "Skip sign in" element
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
         elementMethods.clickElement(skipSignInElement);
 
         //Validam pagina de "Register"
-        String actualRegister = driver.getTitle();
-        Assert.assertEquals("Register", actualRegister);
+        elementMethods.validatePage("Register");
 
         //SwitchTo
         WebElement switchToElement = driver.findElement(By.xpath("//a[contains(text(),'Switch')]"));
-        switchToElement.click();
-        Actions action = new Actions(driver);
-        action.moveToElement(switchToElement).build().perform(); //merge si fara build
+        elementMethods.switchElement(switchToElement);
 
         WebElement alertsElement = driver.findElement(By.xpath("//a[contains(text(),'Frame')]"));
-        alertsElement.click();
+        elementMethods.clickElement(alertsElement);
         //String url = "http://demo.automationtesting.in/Frames.html";
         driver.navigate().to("http://demo.automationtesting.in/Frames.html");
         //driver.navigate().refresh(); refresh
@@ -45,14 +45,14 @@ public class FrameTest extends ShareData {
         List<WebElement> frameOptions = driver.findElements(By.cssSelector("ul[class='nav nav-tabs '] li a"));
         frameOptions.get(0).click();
         //ne mutam pe un iframe
-        driver.switchTo().frame("singleframe");
+        frameMethods.switchFrameById("singleframe");
         WebElement singleInputElement = driver.findElement(By.xpath("//input[@type='text']"));
         singleInputElement.sendKeys("spatiu");
-        driver.switchTo().defaultContent();
+        frameMethods.switchFrameDefault();
 
         frameOptions.get(1).click();
-        driver.findElement(By.xpath("//iframe[@src='MultipleFrames.html']"));
-        driver.findElement(By.xpath("//iframe[@src='SingleFrame.html']"));
+        frameMethods.switchFrameByElement(driver.findElement(By.xpath("//iframe[@src='MultipleFrames.html']")));
+        frameMethods.switchFrameByElement(driver.findElement(By.xpath("//iframe[@src='SingleFrame.html']")));
         WebElement multipleInputElement = driver.findElement(By.xpath("//input[@type='text']"));
         multipleInputElement.sendKeys("multiple frames");
 

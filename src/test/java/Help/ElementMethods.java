@@ -44,4 +44,14 @@ public class ElementMethods {
         action.moveToElement(element).build().perform();
     }
 
+    public void validatePage(String value){
+        String actualRegister = driver.getTitle();
+        Assert.assertEquals(value, actualRegister);
+    }
+
+    public void hoverElement(WebElement element){
+        Actions action = new Actions(driver);
+        action.moveToElement(element).perform();
+    }
+
 }

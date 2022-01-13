@@ -27,21 +27,18 @@ public class AlertTest extends ShareData {
 
         //Identificam "Skip sign in" element
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
-        skipSignInElement.click();
+        elementMethods.clickElement(skipSignInElement);
 
         //Validam pagina de "Register"
-        String actualRegister = driver.getTitle();
-        Assert.assertEquals("Register", actualRegister);
+        elementMethods.validatePage("Register");
 
         //SwitchTo
         WebElement switchToElement = driver.findElement(By.xpath("//a[contains(text(),'Switch')]"));
-        switchToElement.click();
-        Actions action = new Actions(driver);
-        action.moveToElement(switchToElement).build().perform(); //merge si fara build
+        elementMethods.switchElement(switchToElement);
 
         //Alerts
         WebElement alertsElement = driver.findElement(By.xpath("//a[contains(text(),'Alert')]"));
-        alertsElement.click();
+        elementMethods.clickElement(alertsElement);
         //String url = "http://demo.automationtesting.in/Alerts.html";
         driver.navigate().to("http://demo.automationtesting.in/Alerts.html");
         //driver.navigate().refresh(); refresh
@@ -50,30 +47,26 @@ public class AlertTest extends ShareData {
         alertOptions.get(0).click();
         //click the button element
         WebElement clickTheButtonElement = driver.findElement(By.cssSelector("#OKTab button"));
-        clickTheButtonElement.click();
+        elementMethods.clickElement(clickTheButtonElement);
 
         //inchide alerta
-        Alert alertOk = driver.switchTo().alert();
-        alertOk.accept();
+        alertMethods.acceptAlert();
 
         //alerta 2
         alertOptions.get(1).click();
         //click the button element
         WebElement clickTheButton2Element = driver.findElement(By.cssSelector("#CancelTab button"));
-        clickTheButton2Element.click();
+        elementMethods.clickElement(clickTheButton2Element);
         //inchide alerta cu cancel
-        Alert alertOkCancel = driver.switchTo().alert();
-        alertOkCancel.dismiss();
+        alertMethods.cancelAlert();
 
         //alerta 3
         alertOptions.get(2).click();
         //click the button element
         WebElement clickTheButton3Element = driver.findElement(By.cssSelector("#Textbox button"));
-        clickTheButton3Element.click();
+        elementMethods.clickElement(clickTheButton3Element);
         //inchide alerta cu cancel
-        Alert alertText = driver.switchTo().alert();
-        alertText.sendKeys("scris");
-        alertText.accept();
+        alertMethods.acceptFillAlert("alerta");
 
     }
 }
