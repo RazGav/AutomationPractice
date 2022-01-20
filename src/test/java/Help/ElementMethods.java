@@ -51,12 +51,6 @@ public class ElementMethods {
         yearSelect.selectByValue(value);
     }
 
-    public void switchElement(WebElement element){
-        waitElementVisible(element);
-        element.click();
-        Actions action = new Actions(driver);
-        action.moveToElement(element).build().perform();
-    }
 
     public void validatePage(String value){
         String actualRegister = driver.getTitle();

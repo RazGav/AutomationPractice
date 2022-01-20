@@ -18,7 +18,7 @@ public class PropertyFile {
     public void loadFile(String path){
         properties = new Properties();
         try {
-            fileInputStream = new FileInputStream("src/test/resources/DriverData/" + path + ".properties");
+            fileInputStream = new FileInputStream("src/test/resources/" + path + ".properties");
             properties.load(fileInputStream);
         } catch (IOException e) {
             e.printStackTrace();

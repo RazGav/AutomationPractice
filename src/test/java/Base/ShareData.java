@@ -11,7 +11,7 @@ public class ShareData {
     public WebDriver driver;
 
     public void setUp(){
-        PropertyFile driverResource = new PropertyFile("DriverResource");
+        PropertyFile driverResource = new PropertyFile("/DriverData/DriverResource");
 
         //Specificam unde se afla driverul pentru browser
         System.setProperty(driverResource.getValue("driverBrowser"), driverResource.getValue("pathDriver"));
